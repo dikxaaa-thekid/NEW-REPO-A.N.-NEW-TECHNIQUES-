@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>real-estate - A.N NEW Techniques Center</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f4f4f4;
+      overflow-x: hidden;
+    }
+
+    .header {
+      width: 100%;
+      padding: 25px 30px;
+      background-color: #f9f9f9;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #ccc;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      position: sticky;
+    }
+
+    .logo-section {
+      display: flex;
+      align-items: center;
+    }
+
+    .logo-section img {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid #00000010;
+      margin-right: 15px;
+    }
+
+    .brand-name {
+      font-size: 36px;
+      font-weight: bold;
+      color: #000;
+      line-height: 1.2;
+    }
+
+    .tagline {
+      font-size: 14px;
+      color: #444;
+      margin-top: 5px;
+      font-style: italic;
+    }
+
+    .search-icon {
+      font-size: 24px;
+      cursor: pointer;
+    }
+
+    .search-box {
+      display: none;
+      position: absolute;
+      top: 110px;
+      right: 30px;
+      background-color: #fff;
+      padding: 10px;
+      border: 1px solid #ccc;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+      border-radius: 8px;
+      z-index: 1000;
+    }
+
+    .search-box input {
+      padding: 5px 10px;
+      width: 200px;
+      border: 1px solid #aaa;
+      border-radius: 4px;
+      margin-right: 5px;
+    }
+
+    .search-box button {
+      padding: 6px 12px;
+      background-color: #333;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .navbar {
+      background-color: #333;
+      padding: 10px 0;
+      text-align: center;
+    }
+
+    .navbar a {
+      color: white;
+      text-decoration: none;
+      margin: 0 20px;
+      font-weight: bold;
+      font-size: 16px;
+    }
+
+    .navbar a:hover {
+      color: #FFD700;
+    }
+
+    h2 {
+      text-align: center;
+      font-size: 2.2rem;
+      margin: 30px 0 10px;
+    }
+
+    .project {
+      background: #ffffff;
+      margin: 40px auto;
+      padding: 30px;
+      border-radius: 20px;
+      max-width: 1100px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    }
+
+    .project:hover {
+      transform: scale(1.02);
+      transition: 0.3s;
+    }
+
+    iframe, video {
+      width: 100%; 
+      height: 300px;
+      border-radius: 12px;
+      margin-top: 20px;
+    }
+
+    ul {
+      padding-left: 20px;
+    }
+
+    summary {
+      font-weight: bold;
+      cursor: pointer;
+      padding: 10px;
+      background-color: #eee;
+      border-radius: 10px;
+      margin-top: 20px;
+    }
+
+    details[open] summary {
+      background-color: #ddd;
+    }
+
+    details {
+      background: #f9f9f9;
+      padding: 10px 20px;
+      border-radius: 10px;
+      margin-top: 10px;
+    }
+
+    .map {
+      width: 100%; 
+      height: 300px;
+      border-radius: 12px;
+      margin-top: 20px;
+    }
+
+    .whatsapp-float {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: #25D366;
+      color: white;
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      text-decoration: none;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+      z-index: 999;
+    }
+
+    .whatsapp-float i { color: white; }
+
+    footer {
+      background-color: #333;
+      color: #fff;
+      text-align: center;
+      padding: 40px 20px;
+    }
+
+    footer .footer-title {
+      font-size: 20px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    footer .footer-powered {
+      font-size: 16px;
+      margin-bottom: 15px;
+    }
+
+    footer .social-icons a {
+      font-size: 24px;
+      margin: 0 10px;
+      color: #fff;
+    }
+
+    .fa-youtube { color: #FF0000; }
+    .fa-instagram { color: #E1306C; }
+    .fa-whatsapp { color: #25D366; }
+    .fa-facebook { color: #3b5998; }
+    .fa-linkedin { color: #0A66C2; }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="logo-section">
+      <img src="IMG-20250729-WA0015 - Copy.jpg" alt="Logo"/>
+      <div>
+        <div class="brand-name">A.N NEW TECHNIQUES CENTER</div>
+        <div class="tagline">• Real Estate | Education | Finance | Business Services •</div>
+      </div>
+    </div>
+    <div class="search-icon" onclick="toggleSearch()">🔍</div>
+    <div class="search-box" id="searchBox">
+      <input type="text" id="searchInput" placeholder="Search here..." />
+      <button onclick="performSearch()">Search</button>
+    </div>
+  </div>
+
+  <!-- NAVBAR -->
+  <div class="navbar">
+    <a href="index.html">Home</a>
+    <a href="sevices.html">Services</a>
+    <a href="gallery.html">Gallery</a>
+    <a href="contact.html">Contact</a>
+  </div>
+
+  <a href="https://wa.me/919821660899" class="whatsapp-float" target="_blank">
+    <i class="fab fa-whatsapp"></i>
+  </a
+  >
+<!-- Start of Project Section -->
+<h2>🗺 Real Estate Planning</h2>
+
+<div class="project">
+  <h1>🏠 Shri Rama Green City</h1>
+  <p><strong>Free Hold Plots in Super Noida</strong><br>Your Smart HOMES in Super Noida</p>
+  <p><strong>उपलब्ध प्लॉट साइज:</strong> 30, 40, 50, 60, 100, 200 गज़</p>
+  <ul>
+    <li>नगद व आसान किस्तों पर प्लॉट उपलब्ध</li>
+    <li>बैंक लोन की सुविधा उपलब्ध</li>
+    <li>सभी प्लॉट Free Hold हैं</li>
+    <li>ईस्टर्न पेरिफेरल एक्सप्रेसवे के पास</li>
+    <li>कु. मायावती डिग्री कॉलेज के पास</li>
+    <li>वेब सिटी मात्र 1 किमी की दूरी पर</li>
+    <li>नजदीकी पंजाब नेशनल बैंक</li>
+    <li>कॉलोनी में मंदिर निर्माण</li>
+    <li>N.C.P.E. कॉलेज, ग्रेटर नोएडा के पास</li>
+    <li>D.S.R. मॉडर्न पब्लिक स्कूल नजदीक</li>
+    <li>बिजली की सुविधा एवं पक्के RCC रोड</li>
+    <li>इंडस्ट्रियल एरिया मात्र 1 किमी की दूरी पर</li>
+    <li>पक्की बाउंड्री वॉल एवं मीठा पानी केवल 50 फीट गहराई पर</li>
+  </ul>
+
+  <video controls>
+    <source src="Video.mp4" type="video/mp4">
+    आपका ब्राउज़र वीडियो को सपोर्ट नहीं करता।
+  </video>
+
+  <details>
+    <summary>❓ FAQs - श्री रामा ग्रीन सिटी</summary>
+    <ul>
+      <li>👉 हाँ, सभी प्लॉट Free Hold हैं</li>
+      <li>👉 हाँ, EMI और आसान किस्तें उपलब्ध</li>
+      <li>👉 बैंक लोन सुविधा उपलब्ध</li>
+      <li>👉 बिजली और मीठा पानी मौजूद</li>
+      <li>👉 लोकेशन कॉलेज, बैंक, वेब सिटी के पास</li>
+      <li>👉 कॉलोनी में सड़कें, मंदिर और बाउंड्री वॉल पहले से हैं</li>
+      <li>👉 साइट विजिट के लिए कॉल/WhatsApp करें: 9821660899</li>
+    </ul>
+  </details>
+
+  <iframe class="map" src="https://www.google.com/maps/embed?..."></iframe>
+</div>
+
+<div class="project">
+  <h3>🏠 Golden City – Badalpur, NH-91</h3>
+  <p><strong>Free Hold Plots Available</strong><br>पहले आओ, पहले पाओ — G.T. Road पर आपके सपनों का प्लॉट!</p>
+  <ul>
+    <li>एयर फोर्स स्टेशन के नजदीक</li>
+    <li>कु. मायावती डिग्री कॉलेज</li>
+    <li>कु. मायावती पॉलीटेकनिक कॉलेज</li>
+    <li>रजनीगंधा फिल्म सिटी</li>
+    <li>20', 22', 25' चौड़ी RCC सड़कें</li>
+    <li>24 घंटे बिजली और मीठा पानी</li>
+    <li>मार्केट, पार्क एरिया</li>
+    <li>नालियों की सुरंग, बाउंड्री वॉल</li>
+    <li>पक्की रजिस्ट्री व दाखिल-खारिज</li>
+  </ul>
+
+  <video controls>
+    <source src="video2.mp4" type="video/mp4">
+    आपका ब्राउज़र वीडियो को सपोर्ट नहीं करता।
+  </video>
+
+  <details>
+    <summary>❓ FAQs – Golden City</summary>
+    <ul>
+      <li>👉 सभी साइज में प्लॉट उपलब्ध</li>
+      <li>👉 24 घंटे बिजली और पानी</li>
+      <li>👉 डेवलप कॉलोनी – सड़कें, नालियाँ, पार्क</li>
+      <li>👉 रजिस्ट्री और दाखिल-खारिज सुविधा</li>
+      <li>👉 साइट विजिट के लिए कॉल/WhatsApp करें: 9821660899</li>
+    </ul>
+  </details>
+
+  <iframe class="map" src="https://www.google.com/maps/embed?..."></iframe>
+</div>
+
+<div class="project">
+  <h3>🏡 World Hill Homes</h3>
+  <p>जहाँ घर सिर्फ सपना नहीं, एक सुंदर हकीकत है</p>
+  <ul>
+    <li>Residential Plots & Simplex Villas</li>
+    <li>24 घंटे सिक्योरिटी</li>
+    <li>सीवरेज, स्ट्रीट लाइट, मार्केट</li>
+    <li>POP कॉर्निस, Designer Tiles</li>
+    <li>Modular Kitchen, Granite Counter</li>
+    <li>Earthquake Resistant RCC Structure</li>
+  </ul>
+
+  <video controls>
+    <source src="video3.mp4" type="video/mp4">
+    आपका ब्राउज़र वीडियो को सपोर्ट नहीं करता।
+  </video>
+
+  <details>
+    <summary>❓ FAQs – World Hill Homes</summary>
+    <ul>
+      <li>👉 प्लॉट + Simplex Villas दोनों उपलब्ध</li>
+      <li>👉 24 घंटे सिक्योरिटी</li>
+      <li>👉 सभी सुविधाएं – बिजली, पानी, मंदिर</li>
+      <li>👉 RCC Earthquake Resistant Structure</li>
+      <li>👉 Modular Kitchen सहित</li>
+      <li>👉 साइट विजिट के लिए कॉल/WhatsApp करें: 9821660899</li>
+    </ul>
+  </details>
+
+  <iframe class="map" src="https://www.google.com/maps/embed?..."></iframe>
+</div>
+<!-- End of Project Section -->
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-title">A.N New Techniques Center</div>
+    <div class="footer-powered">Powered by <strong style="color: #FFD700;">JCRM Technology</strong></div>
+    <div class="social-icons">
+      <a href="#"><i class="fab fa-youtube"></i></a>
+      <a href="#"><i class="fab fa-instagram"></i></a>
+      <a href="https://wa.me/919821660899" target="_blank"><i class="fab fa-whatsapp"></i></a>
+      <a href="#"><i class="fab fa-facebook"></i></a>
+      <a href="#"><i class="fab fa-linkedin"></i></a>
+    </div>
+  </footer>
+
+  <!-- JS -->
+  <script>
+    function toggleSearch() {
+      const box = document.getElementById('searchBox');
+      box.style.display = box.style.display === 'block' ? 'none' : 'block';
+    }
+
+    function performSearch() {
+      const input = document.getElementById('searchInput').value;
+      if (input.trim()) {
+        alert("You searched for: " + input);
+      } else {
+        alert("Please enter something to search.");
+      }
+    }
+  </script>
+</body>
+</html>

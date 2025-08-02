@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Gallery - A.N NEW Techniques Center</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f4f4f4;
+      overflow-x: hidden;
+    }
+
+    /* HEADER */
+    .header {
+      width: 100%;
+      padding: 25px 30px; 
+      background-color: #f9f9f9;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #ccc;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      position: sticky;
+    }
+
+    .logo-section {
+      display: flex;
+      align-items: center;
+    }
+
+    .logo-section img {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-right: 15px;
+    }
+
+    .brand-name {
+      font-size: 36px;
+      font-weight: bold;
+      color: #000;
+      line-height: 1.2;
+    }
+
+    .tagline {
+      font-size: 14px;
+      color: #444;
+      margin-top: 5px;
+      font-style: italic;
+    }
+
+    .search-icon {
+      font-size: 24px;
+      cursor: pointer;
+    }
+
+    .search-box {
+      display: none;
+      position: absolute;
+      top: 110px;
+      right: 30px;
+      background-color: #fff;
+      padding: 10px;
+      border: 1px solid #ccc;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+      border-radius: 8px;
+      z-index: 1000;
+    }
+
+    .search-box input {
+      padding: 5px 10px;
+      width: 200px;
+      border: 1px solid #aaa;
+      border-radius: 4px;
+      margin-right: 5px;
+    }
+
+    .search-box button {
+      padding: 6px 12px;
+      background-color: #333;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    /* NAVBAR */
+    .navbar {
+      background-color: #333;
+      padding: 10px 0;
+      text-align: center;
+    }
+
+    .navbar a {
+      color: white;
+      text-decoration: none;
+      margin: 0 20px;
+      font-weight: bold;
+      font-size: 16px;
+    }
+
+    .navbar a:hover {
+      color: #FFD700;
+    }
+
+    /* GALLERY TITLE */
+    .gallery-title {
+      text-align: center;
+      font-size: 42px;
+      font-weight: bold;
+      color: #222;
+      margin: 40px 20px 20px;
+      font-family: 'Georgia', serif;
+      position: relative;
+    }
+
+    .gallery-title::after {
+      content: "";
+      display: block;
+      width: 80px;
+      height: 4px;
+      background: #FFD700;
+      margin: 10px auto 0;
+      border-radius: 2px;
+    }
+
+    /* GALLERY SECTION */
+    .gallery {
+      padding: 20px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      background-color: #fff;
+    }
+
+    .gallery-item {
+      background-color: #eee;
+      height: 400px;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      transition: transform 0.5s ease;
+      opacity: 0;
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .gallery-item.zoomIn {
+      animation: zoomIn 0.8s ease forwards;
+    }
+
+    @keyframes zoomIn {
+      from {
+        transform: scale(0.8);
+        opacity: 0;
+      }
+      to {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+
+    /* FOOTER */
+    footer {
+      background-color: #333;
+      color: #fff;
+      text-align: center;
+      padding: 40px 20px;
+    }
+
+    footer .footer-title {
+      font-size: 20px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    footer .footer-powered {
+      font-size: 16px;
+      margin-bottom: 15px;
+    }
+
+    footer .social-icons a {
+      font-size: 24px;
+      margin: 0 10px;
+      color: #fff;
+      transition: color 0.3s ease;
+    }
+
+    footer .social-icons a:hover {
+      opacity: 0.7;
+    }
+
+    .fa-youtube { color: #FF0000; }
+    .fa-instagram { color: #E1306C; }
+    .fa-whatsapp { color: #25D366; }
+    .fa-facebook { color: #3b5998; }
+    .fa-linkedin { color: #0A66C2; }
+
+    /* WHATSAPP FLOATING ICON */
+    .whatsapp-float {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: #25D366;
+      color: white;
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      text-decoration: none;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+      z-index: 999;
+    }
+
+    .whatsapp-float i {
+      color: white;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="logo-section">
+      <img src="IMG-20250729-WA0015 - Copy.jpg" alt="Logo"/>
+      <div>
+        <div class="brand-name">A.N NEW TECHNIQUES CENTER</div>
+        <div class="tagline">• Real Estate | Education | Finance | Business Services •</div>
+      </div>
+    </div>
+    <div class="search-icon" onclick="toggleSearch()">🔍</div>
+
+    <!-- SEARCH BOX -->
+    <div class="search-box" id="searchBox">
+      <input type="text" id="searchInput" placeholder="Search here..." />
+      <button onclick="performSearch()">Search</button>
+    </div>
+  </div>
+
+  <!-- NAVBAR -->
+  <div class="navbar">
+    <a href="index.html">Home</a>
+    <a href="sevices.html">Services</a>
+    <a href="gallery.html">Gallery</a>
+    <a href="contact.html">Contact</a>
+  </div>
+
+  <!-- GALLERY TITLE -->
+  <div class="gallery-title">Our Gallery</div>
+
+  <!-- GALLERY GRID -->
+  <div class="gallery">
+    <!-- gallery images -->
+    <div class="gallery-item"><img src="WhatsApp Image 2025-07-31 at 18.02.46_6e60e5bd.jpg" alt=""></div>
+    <div class="gallery-item"><img src="WhatsApp Image 2025-07-31 at 18.02.50_3bba928f.jpg" alt=""></div>
+    <div class="gallery-item"><img src="WhatsApp Image 2025-07-31 at 18.02.47_1d406a02.jpg" alt=""></div>
+    <div class="gallery-item"><img src="WhatsApp Image 2025-07-31 at 18.02.50_3299c803.jpg" alt=""></div>
+    <div class="gallery-item"><img src="WhatsApp Image 2025-07-31 at 18.02.47_39a5010f.jpg" alt=""></div>
+    <div class="gallery-item"><img src="WhatsApp Image 2025-07-31 at 18.02.48_1d56c9b4.jpg" alt=""></div>
+    <div class="gallery-item"><img src="WhatsApp Image 2025-07-31 at 18.02.49_da238cc7.jpg" alt=""></div>
+    <div class="gallery-item"><img src="IMG-20250731-WA0031.jpg" alt=""></div>
+    <div class="gallery-item"><img src="WhatsApp Image 2025-07-31 at 18.02.49_d61a40fd.jpg" alt=""></div>
+    <div class="gallery-item"><img src="WhatsApp Image 2025-07-31 at 18.02.49_4e283e71.jpg" alt=""></div>
+    <div class="gallery-item"><img src="IMG-20250731-WA0033.jpg" alt=""></div>
+    <div class="gallery-item"><img src="WhatsApp Image 2025-07-31 at 18.02.49_da238cc7.jpg" alt=""></div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-title">A.N New Techniques Center</div>
+    <div class="footer-powered">
+      Powered by <strong style="color: #FFD700;">JCRM Technology</strong>
+    </div>
+    <div class="social-icons">
+      <a href="https://www.youtube.com" target="_blank"><i class="fab fa-youtube"></i></a>
+      <a href="https://www.instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+      <a href="https://wa.me/919821660899?text=Heey%20A.N%20NEW%20TEQUNIQUES%20CENTER%20I%20am%20interested%20in%20your%20services%20please%20send%20me%20the%20details." target="_blank"><i class="fab fa-whatsapp"></i></a>
+      <a href="https://www.facebook.com" target="_blank"><i class="fab fa-facebook"></i></a>
+      <a href="https://www.linkedin.com" target="_blank"><i class="fab fa-linkedin"></i></a>
+    </div>
+  </footer>
+
+  <!-- WHATSAPP FLOATING ICON -->
+  <a href="https://wa.me/919821660899?text=Heey%20A.N%20NEW%20TEQUNIQUES%20CENTER%20I%20am%20interested%20in%20your%20services%20please%20send%20me%20the%20details." class="whatsapp-float" target="_blank">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+
+  <!-- JS FOR GALLERY ANIMATION + SEARCH -->
+  <script>
+    // Scroll Zoom Animation
+    const galleryItems = document.querySelectorAll('.gallery-item');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('zoomIn');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.2 });
+    galleryItems.forEach(item => observer.observe(item));
+
+    // Search box toggle
+    function toggleSearch() {
+      const box = document.getElementById('searchBox');
+      box.style.display = box.style.display === 'block' ? 'none' : 'block';
+    }
+
+    // Search function
+    function performSearch() {
+      const input = document.getElementById('searchInput').value;
+      if (input.trim()) {
+        alert("You searched for: " + input);
+      } else {
+        alert("Please enter something to search.");
+      }
+    }
+  </script>
+</body>
+</html>

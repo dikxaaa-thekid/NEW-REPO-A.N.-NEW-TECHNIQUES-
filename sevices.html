@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>  
+  <meta charset="UTF-8" />  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>  
+  <title>Contact Us - A.N NEW Techniques Center</title>  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet"/>  
+  <style>  
+    * { margin: 0; padding: 0; box-sizing: border-box; }  
+    body {  
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;  
+      background-color: #f4f4f4;  
+      overflow-x: hidden;  
+      color: #222;  
+    }
+
+    .header {  
+      width: 100%; padding: 35px 50px; background-color: #f9f9f9;  
+      display: flex; justify-content: space-between; align-items: center;  
+      border-bottom: 1px solid #ccc;  
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1); position: relative;  
+      flex-wrap: wrap;
+      position: sticky;   
+      top: 0;             
+      z-index: 999;   
+      flex-wrap: wrap;
+    }
+
+    .logo-section {
+      display: flex; align-items: center;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+
+    .logo-section img {
+      width: 100px; height: 100px; border-radius: 50%; object-fit: cover;
+      border: 2px solid #00000010;
+    }
+
+    .brand-name {
+      font-size: 36px; font-weight: bold; color: #000; line-height: 1.2;
+    }
+
+    .tagline {
+      font-size: 14px; color: #444; margin-top: 5px; font-style: italic;
+    }
+
+    .search-icon { font-size: 24px; cursor: pointer; }
+
+    .search-box {
+      display: none; position: absolute; top: 130px; right: 50px;
+      background-color: #fff; padding: 10px; border: 1px solid #ccc;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2); border-radius: 8px; z-index: 1000;
+    }
+
+    .search-box input {
+      padding: 5px 10px; width: 200px; border: 1px solid #aaa;
+      border-radius: 4px; margin-right: 5px;
+    }
+
+    .search-box button {
+      padding: 6px 12px; background-color: #333; color: white;
+      border: none; border-radius: 4px; cursor: pointer;
+    }
+
+    .navbar {
+      background-color: #333; padding: 10px 0; text-align: center;
+    }
+
+    .navbar a {
+      color: white; text-decoration: none; margin: 0 20px;
+      font-weight: bold; font-size: 16px;
+    }
+
+    .navbar a:hover { color: #FFD700; }
+
+    .contact-heading {
+      background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1542744095-291d1f67b221') center/cover no-repeat;
+      padding: 80px 20px; text-align: center; color: #fff;
+    }
+
+    .contact-heading h2 {
+      font-size: 3rem; font-family: 'Playfair Display', serif;
+    }
+
+    .contact-section {
+      display: flex; flex-wrap: wrap; padding: 40px 20px; gap: 40px;
+      justify-content: center; background-color: #fff;
+    }
+
+    .contact-form, .contact-details {
+      flex: 1 1 350px; background-color: #f2ede5; padding: 30px;
+      border-radius: 12px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+
+    .contact-form h3, .contact-details h3 {
+      font-family: 'Playfair Display', serif; margin-bottom: 20px;
+      font-size: 24px;
+    }
+
+    .contact-form input, .contact-form textarea {
+      width: 100%; padding: 12px; margin: 10px 0 20px;
+      border: 1px solid #ccc; border-radius: 8px;
+    }
+
+    .contact-form button {
+      background-color: #000; color: #fff; padding: 12px 24px;
+      border: none; border-radius: 8px; font-size: 16px; cursor: pointer;
+    }
+
+    .contact-form button:hover { background-color: #444; }
+
+    .contact-details p {
+      margin: 10px 0; line-height: 1.6; font-size: 16px;
+    }
+
+    footer {
+      background-color: #333; color: #fff; text-align: center;
+      padding: 40px 20px; margin-top: 40px;
+    }
+
+    footer .footer-title { font-size: 20px; font-weight: bold; margin-bottom: 10px; }
+    footer .footer-powered { font-size: 16px; margin-bottom: 15px; }
+
+    footer .social-icons a {
+      font-size: 24px; margin: 0 10px; color: #fff;
+      transition: color 0.3s ease;
+    }
+
+    footer .social-icons a:hover { opacity: 0.7; }
+    .fa-youtube { color: #FF0000; }
+    .fa-instagram { color: #E1306C; }
+    .fa-whatsapp { color: #25D366; }
+    .fa-facebook { color: #3b5998; }
+    .fa-linkedin { color: #0A66C2; }
+
+    .whatsapp-float {
+      position: fixed; bottom: 20px; right: 20px; background-color: #25D366;
+      color: white; border-radius: 50%; width: 60px; height: 60px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 28px; text-decoration: none;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.3); z-index: 999;
+    }
+
+    .whatsapp-float i { color: white; }
+
+    @media (max-width: 768px) {
+      .contact-heading h2 { font-size: 2.2rem; }
+
+      .header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .logo-section {
+        width: 100%;
+        justify-content: flex-start;
+      }
+
+      .search-box {
+        position: static;
+        margin-top: 10px;
+      }
+
+      .logo-section img {
+        width: 70px; height: 70px;
+      }
+    }
+
+  </style>  
+</head>  
+<body>  
+
+  <div class="header" data-aos="fade-down">  
+    <div class="logo-section">  
+      <img src="IMG-20250729-WA0015 - Copy.jpg" alt="Logo"/>  
+      <div>  
+        <div class="brand-name">A.N NEW TECQUNIQUES CENTER</div>  
+        <div class="tagline">• Real Estate | Education | Finance | Business Services •</div>  
+      </div>  
+    </div>  
+    <div class="search-icon" onclick="toggleSearch()">🔍</div>  
+    <div class="search-box" id="searchBox">  
+      <input type="text" id="searchInput" placeholder="Search here..." />  
+      <button onclick="performSearch()">Search</button>  
+    </div>  
+  </div>  
+
+  <div class="navbar" data-aos="fade-up">  
+    <a href="index.html">Home</a>  
+    <a href="sevices.html">Services</a>  
+    <a href="gallery.html">Gallery</a>  
+    <a href="contact.html">Contact</a>  
+  </div>  
+
+<section class="services-heading" style="text-align: center; padding: 60px 20px; background-color: #fff;" data-aos="fade-down">
+  <h2 style="font-size: 3rem; font-family: 'Playfair Display', serif;">Our Services</h2>
+</section>
+
+<section class="services-section" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; padding: 40px 20px; background-color: #f9f9f9;">
+
+  <!-- Real Estate -->
+  <div class="service-card" style="background: white; padding: 25px; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);" data-aos="fade-up">
+    <h3 style="font-size: 22px; margin-bottom: 10px;">🏠 Real Estate Center</h3>
+    <p>We offer comprehensive property consulting and real estate solutions tailored to your needs. Explore properties, investment opportunities, and more.</p>
+    <button onclick="toggleGallery()" style="margin-top: 15px; padding: 10px 20px; background-color: #000; color: #fff; border: none; border-radius: 6px; cursor: pointer;">Explore</button>
+  </div>
+
+  <!-- Education -->
+  <div class="service-card" style="background: white; padding: 25px; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);" data-aos="fade-up">
+    <h3 style="font-size: 22px; margin-bottom: 10px;">📚 Education Centre</h3>
+    <p>Our education center provides coaching, tutoring, and career guidance across various subjects and competitive exams to help students succeed.</p>
+    <button style="margin-top: 15px; padding: 10px 20px; background-color: #000; color: #fff; border: none; border-radius: 6px; cursor: pointer;">Explore</button>
+  </div>
+
+  <!-- Ayurvedic -->
+  <div class="service-card" style="background: white; padding: 25px; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);" data-aos="fade-up">
+    <h3 style="font-size: 22px; margin-bottom: 10px;">🧘‍♂️ Ayurvedic & Yoga</h3>
+    <p>Discover holistic healing with our Ayurvedic and yoga services. Improve wellness, reduce stress, and restore balance naturally.</p>
+    <a href="https://yogsathi.com/" target="_blank" style="display: inline-block; margin-top: 15px; padding: 10px 20px; background-color: #000; color: #fff; border-radius: 6px; text-decoration: none;">Explore</a>
+  </div>
+
+  <!-- Finance -->
+  <div class="service-card" style="background: white; padding: 25px; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);" data-aos="fade-up">
+    <h3 style="font-size: 22px; margin-bottom: 10px;">💼 Finance & Business</h3>
+    <p>Expert support in personal finance, business planning, loans, and investment strategies to help you grow and manage your finances.</p>
+    <button style="margin-top: 15px; padding: 10px 20px; background-color: #000; color: #fff; border: none; border-radius: 6px; cursor: pointer;">Explore</button>
+  </div>
+</section>
+
+<!-- Real Estate Gallery Separate Section -->
+<section id="gallery" style="display: none; padding: 20px 40px; background-color: #fff;" data-aos="fade-up">
+  <h2 style="text-align: center; font-size: 2rem; margin-bottom: 30px; font-family: 'Playfair Display', serif;">🏠 Real Estate Gallery</h2>
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
+    <div style="background-color: #fff; padding: 15px; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
+      <img src="WhatsApp Image 2025-07-31 at 18.02.46_6e60e5bd.jpg" style="width: 100%; height: 300px; border-radius: 8px;" />
+    </div>
+    <div style="background-color: #fff; padding: 15px; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
+      <img src="IMG-20250731-WA0033.jpg" style="width: 100%; height: 300px; border-radius: 8px;" />
+    </div>
+    <div style="background-color: #fff; padding: 15px; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
+      <img src="WhatsApp Image 2025-07-31 at 18.02.47_1d406a02.jpg" style="width: 100%;height: 300px; border-radius: 8px;" />
+    </div>
+    <div style="background-color: #fff; padding: 15px; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
+      <img src="WhatsApp Image 2025-07-31 at 18.02.47_39a5010f.jpg" style="width: 100%;height: 300px; border-radius: 8px;" />
+    </div>
+     <div style="background-color: #fff; padding: 15px; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
+      <img src="WhatsApp Image 2025-07-31 at 18.02.48_1d56c9b4.jpg" style="width: 100%; height: 300px; border-radius: 8px;" />
+    </div>
+     <div style="background-color: #fff; padding: 15px; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
+      <img src="WhatsApp Image 2025-07-31 at 18.02.48_5842a441.jpg" style="width: 100%; height: 300px; border-radius: 8px;" />
+    </div>
+     <div style="background-color: #fff; padding: 15px; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
+      <img src="WhatsApp Image 2025-07-31 at 18.02.49_4e283e71.jpg" style="width: 100%; height: 300px; border-radius: 8px;" />
+    </div>
+     <div style="background-color: #fff; padding: 15px; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
+      <img src="IMG-20250731-WA0028.jpg" style="width: 100%; height: 300px; border-radius: 8px;" />
+    </div>
+     <div style="background-color: #fff; padding: 15px; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
+      <img src="WhatsApp Image 2025-07-31 at 18.02.49_d61a40fd.jpg" style="width: 100%; height: 300px; border-radius: 8px;" />
+    </div>
+     <div style="background-color: #fff; padding: 15px; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
+      <img src="WhatsApp Image 2025-07-31 at 18.02.49_da238cc7.jpg" style="width: 100%; height: 300px; border-radius: 8px;" />
+    </div>
+     <div style="background-color: #fff; padding: 15px; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
+      <img src="WhatsApp Image 2025-07-31 at 18.02.50_3299c803.jpg" style="width: 100%; height: 300px; border-radius: 8px;" />
+    </div>
+     <div style="background-color: #fff; padding: 15px; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
+      <img src="IMG-20250731-WA0031.jpg" style="width: 100%; height: 300px; border-radius: 8px;" />
+    </div>
+  </div>
+</section>
+
+<script>
+  function toggleGallery() {
+    const gallery = document.getElementById('gallery');
+    if (gallery.style.display === 'none' || gallery.style.display === '') {
+      gallery.style.display = 'block';
+      gallery.scrollIntoView({ behavior: 'smooth' });
+    } else {
+      gallery.style.display = 'none';
+    }
+  }
+</script>
+
+
+
+  <footer data-aos="fade-up">  
+    <div class="footer-title">A.N New Techniques Center</div>  
+    <div class="footer-powered">Powered by <strong style="color: #FFD700;">JCRM Technology</strong></div>  
+    <div class="social-icons">  
+      <a href="https://www.youtube.com" target="_blank"><i class="fab fa-youtube"></i></a>  
+      <a href="https://www.instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>  
+      <a href="https://wa.me/919821660899?text=Heey%20A.N%20NEW%20TEQUNIQUES%20CENTER%20I%20am%20interested%20in%20your%20services%20please%20send%20me%20the%20details." target="_blank"><i class="fab fa-whatsapp"></i></a>  
+      <a href="https://www.facebook.com" target="_blank"><i class="fab fa-facebook"></i></a>  
+      <a href="https://www.linkedin.com" target="_blank"><i class="fab fa-linkedin"></i></a>  
+    </div>  
+  </footer>  
+
+  <a href="https://wa.me/919821660899?text=Heey%20A.N%20NEW%20TEQUNIQUES%20CENTER%20I%20am%20interested%20in%20your%20services%20please%20send%20me%20the%20details." class="whatsapp-float" target="_blank">  
+    <i class="fab fa-whatsapp"></i>  
+  </a>  
+
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    AOS.init({ duration: 1000 });
+
+    function toggleSearch() {  
+      const box = document.getElementById('searchBox');  
+      box.style.display = box.style.display === 'block' ? 'none' : 'block';  
+    }  
+
+    function performSearch() {  
+      const input = document.getElementById('searchInput').value;  
+      if (input.trim()) {  
+        alert("You searched for: " + input);  
+      } else {  
+        alert("Please enter something to search.");  
+      }  
+    }
+  </script>  
+</body>
+</html>
