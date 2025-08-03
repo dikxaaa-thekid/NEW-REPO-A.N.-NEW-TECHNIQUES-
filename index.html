@@ -1,146 +1,119 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>A.N NEW Techniques Center</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">  <style>
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background-color: #fdfbf7;
-      color: #000;
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">  
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      width: 100%; overflow-x: hidden;
+    }
+    body {  
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;  
+      background-color: #f4f4f4;  
+      color: #222;  
     }
 
-    .header {
-      background-color: #fff;
-      padding: 30px 30px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    .header {  
+      width: 100%; padding: 20px 20px; background-color: #f9f9f9;  
+      display: flex; justify-content: space-between; align-items: center;  
+      border-bottom: 1px solid #ccc;  
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);  
+      position: sticky; top: 0; z-index: 999;  
       flex-wrap: wrap;
     }
 
     .logo-section {
-      display: flex;
-      align-items: center;
-      gap: 15px;
+      display: flex; align-items: center; gap: 15px;
+      flex: 1 1 auto;
     }
 
     .logo-section img {
-      height: 100px;
-      width: 100px;
-      object-fit: cover;
-      border-radius: 50%;
+      width: 70px; height: 70px; border-radius: 50%; object-fit: cover;
+      border: 2px solid #00000010;
+    }
+
+    .brand-text {
+      overflow: hidden;
     }
 
     .brand-name {
-      font-size: 36px;
-      font-weight: bold;
-      color: #000;
-      line-height: 1.2;
+      font-size: 22px; font-weight: bold; color: #000; line-height: 1.2;
+      white-space: nowrap; text-overflow: ellipsis; overflow: hidden;
     }
 
     .tagline {
-      font-size: 16px;
-      color: #555;
-      margin-top: 5px;
-      font-style: italic;
+      font-size: 12px; color: #444; margin-top: 5px; font-style: italic;
     }
 
-    .search-container {
-      position: relative;
-      display: flex;
-      align-items: center;
+    .search-area {
+      display: flex; align-items: center; gap: 10px;
+      position: relative; flex-shrink: 0;
     }
 
     .search-icon {
-      font-size: 24px;
-      cursor: pointer;
-    }
-
-    .search-box {
-      display: none;
-      position: absolute;
-      top: 35px;
-      right: 0;
-      background: #fff;
-      padding: 8px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-      border-radius: 8px;
-      z-index: 1001;
-    }
-
-    .search-box input {
-      padding: 6px 10px;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-      width: 200px;
-    }
-
-    .navbar {
-      display: flex;
-      justify-content: center;
-      background-color: #444;
-      padding: 10px 40px;
-      position: sticky;
-      top: 120px;
-      z-index: 999;
-      flex-wrap: wrap;
-    }
-
-    .navbar a {
-      margin: 0 20px;
-      text-decoration: none;
-      color: #fff;
-      font-weight: 500;
+      font-size: 22px; cursor: pointer; color: #333;
       transition: color 0.3s ease;
     }
 
-    .navbar a:hover {
-      color: #FFD700;
+    .search-box {
+      display: none; position: absolute; top: 100%; right: 0;
+      background-color: #fff; padding: 10px; border: 1px solid #ccc;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2); border-radius: 8px; z-index: 1000;
     }
 
+    .search-box input {
+      padding: 5px 10px; width: 200px; border: 1px solid #aaa;
+      border-radius: 4px; margin-right: 5px;
+    }
+
+    .search-box button {
+      padding: 6px 12px; background-color: #333; color: white;
+      border: none; border-radius: 4px; cursor: pointer;
+    }
+
+    .navbar {
+      background-color: #333; padding: 10px 0; text-align: center;
+    }
+
+    .navbar a {
+      color: white; text-decoration: none; margin: 0 20px;
+      font-weight: bold; font-size: 16px;
+    }
+
+    .navbar a:hover { color: #FFD700; }
+
     .hero-image {
-      width: 100%;
-      height: auto;
-      margin-top: 0;
+      width: 100%; height: auto; margin-top: 0;
       animation: fadeIn 1.2s ease-in-out;
     }
 
     @keyframes fadeIn {
-      from {opacity: 0;}
-      to {opacity: 1;}
+      from {opacity: 0;} to {opacity: 1;}
     }
 
     .services-section {
-      text-align: center;
-      padding: 60px 20px;
+      text-align: center; padding: 60px 20px;
       background-color: #fff8ef;
     }
 
     .services-title {
-      font-size: 36px;
-      font-weight: bold;
-      margin-bottom: 40px;
+      font-size: 36px; font-weight: bold; margin-bottom: 40px;
     }
 
     .services-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+      grid-template-columns: repeat(2, 1, minmax(280px, 1fr));
       gap: 30px;
       max-width: 1000px;
       margin: 0 auto;
     }
 
     .service-card {
-      background-color: #fff;
-      border-radius: 20px;
-      padding: 30px;
+      background-color: #fff; border-radius: 20px; padding: 30px;
       box-shadow: 0 8px 16px rgba(0,0,0,0.1);
       transition: transform 0.3s ease, box-shadow 0.3s ease;
       cursor: pointer;
@@ -152,78 +125,105 @@
     }
 
     .service-title {
-      font-size: 24px;
-      font-weight: bold;
-      margin-bottom: 10px;
+      font-size: 24px; font-weight: bold; margin-bottom: 10px;
       color: #2b2b2b;
     }
 
     .service-desc {
-      font-size: 15px;
-      color: #555;
-      line-height: 1.6;
+      font-size: 15px; color: #555; line-height: 1.6;
     }
 
-    @media (max-width: 600px) {
-      .services-grid {
-        grid-template-columns: 1fr;
+    @media (max-width: 768px) {
+      .header {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .logo-section {
+        width: auto;
+        flex-wrap: wrap;
+      }
+      .brand-name {
+        font-size: 16px;
       }
 
-      .services-title {
-        font-size: 28px;
+      .tagline {
+        font-size: 10px;
       }
 
-      .service-title {
-        font-size: 20px;
+      .search-area {
+        margin-left: auto;
+        margin-top: 0;
+        margin-right: 0;
+      }
+
+      .search-box {
+        position: absolute;
+        top: 100%;
+        right: 0;
+        width: max-content;
       }
 
       .search-box input {
         width: 150px;
+        margin-bottom: 0;
+      }
+
+      .search-box button {
+        width: auto;
+      }
+
+      .services-grid{
+        grid-template-columns: 1fr;
       }
     }
 
     footer {
-      background-color: #333;
-      color: #fff;
-      text-align: center;
-      padding: 40px 20px;
+      background-color: #333; color: #fff; text-align: center; padding: 40px 20px;
     }
-  </style></head>
+  </style>
+</head>
 <body>
+
   <!-- Header Section -->
   <div class="header">
     <div class="logo-section">
       <img src="IMG-20250729-WA0015 - Copy.jpg" alt="Logo" />
-      <div>
-        <div class="brand-name">A.N NEW TECHNIQUES CENTER</div>
+      <div class="brand-text">
+        <div class="brand-name">A.N. NEW TECHNIQUES CENTER</div>
         <div class="tagline">• Real Estate | Education | Finance | Business Services •</div>
       </div>
-    </div><div class="search-container">
-  <div class="search-icon" onclick="toggleSearch()">🔍</div>
-  <div class="search-box" id="searchBox">
-    <input type="text" id="searchInput" placeholder="Search here..." oninput="handleSearch(this.value)">
-  </div>
-</div>
+    </div>
 
-  </div>  <!-- Navbar -->  <div class="navbar">
+    <div class="search-area">
+      <div class="search-icon" onclick="toggleSearch()">🔍</div>  
+      <div class="search-box" id="searchBox">  
+        <input type="text" id="searchInput" placeholder="Search here..." />  
+        <button onclick="performSearch()">Search</button>  
+      </div>
+    </div>
+  </div>
+
+  <!-- Navbar -->
+  <div class="navbar">
     <a href="index.html">Home</a>
     <a href="sevices.html">Services</a>
     <a href="gallery.html">Gallery</a>
     <a href="contact.html">Contact</a>
-  </div>  <!-- Hero Image -->  <div>
-    <img class="hero-image" src="IMG-20250729-WA0016.jpg" alt="Our Center" />
-  </div>  <!-- Services Section -->  <div class="services-section">
+  </div>
+
+  <!-- Hero Image -->
+  <img class="hero-image" src="IMG-20250729-WA0016.jpg" alt="Our Center" />
+
+  <!-- Services Section -->
+  <div class="services-section">
     <div class="services-title" data-aos="fade-up">Our Services</div>
     <div class="services-grid">
-      <div class="service-card" 
-      onclick="window.location.href='realestate.html'"
-      data-aos="zoom-in">
+      <div class="service-card" onclick="window.location.href='realestate.html'" data-aos="zoom-in">
         <div class="service-title">Real Estate Center</div>
         <div class="service-desc">Buy, sell, rent properties with complete legal support and site visits</div>
       </div>
-      <div class="service-card" 
-      onclick="window.location.href='education.html'"
-      data-aos="zoom-in" data-aos-delay="100">
+      <div class="service-card" onclick="window.location.href='education.html'" data-aos="zoom-in" data-aos-delay="100">
         <div class="service-title">Education Center</div>
         <div class="service-desc">Skilling programs, technical courses and expert mentorship</div>
       </div>
@@ -231,14 +231,15 @@
         <div class="service-title">Ayurvedic & Yoga</div>
         <div class="service-desc">Wellness coaching and Ayurvedic consultation</div>
       </div>
-      <div class="service-card" 
-      onclick="window.location.href='finance.html'"
-      data-aos="zoom-in" data-aos-delay="300">
+      <div class="service-card" onclick="window.location.href='finance.html'" data-aos="zoom-in" data-aos-delay="300">
         <div class="service-title">Finance & Business</div>
         <div class="service-desc">Investment solutions, startup guidance and loan consultation</div>
       </div>
     </div>
-  </div>  <!-- Contact Section -->  <div class="services-section">
+  </div>
+
+  <!-- Contact Section -->
+  <div class="services-section">
     <div class="services-title" data-aos="fade-up">Contact Us</div>
     <div class="services-grid" style="max-width: 800px;">
       <div class="service-card" data-aos="zoom-in">
@@ -256,9 +257,12 @@
         <div class="service-desc">📍 Plot No.375 Sector-9 Wave City, N.H.24 Kachera Duriyai Road<br/>G.B. Nagar, U.P. 203207</div>
       </div>
     </div>
-  </div>  <!-- Footer -->  <footer>
-    <div style="margin-bottom: 15px; font-size: 20px; font-weight: bold;">A.N New Techniques Center</div>
-    <div style="margin-bottom: 15px; font-size: 16px;">Powered by <strong style="color: #FFD700;">JCRM Technology</strong></div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div style="margin-bottom: 15px; font-size: 15px; font-weight: bold;">© 25 A.N. New Techniques Center - All rights reserved.</div>
+    <div style="margin-bottom: 15px; font-size: 12px;">Powered by <strong style="color: #FFD700;">JCRM Technologies</strong></div>
     <div style="font-size: 24px;">
       <a href="https://www.youtube.com" target="_blank" style="margin: 0 10px; color: #FF0000;"><i class="fab fa-youtube"></i></a>
       <a href="https://www.instagram.com" target="_blank" style="margin: 0 10px; color: #E1306C;"><i class="fab fa-instagram"></i></a>
@@ -266,21 +270,30 @@
       <a href="https://www.facebook.com" target="_blank" style="margin: 0 10px; color: #3b5998;"><i class="fab fa-facebook"></i></a>
       <a href="https://www.linkedin.com" target="_blank" style="margin: 0 10px; color: #0A66C2;"><i class="fab fa-linkedin"></i></a>
     </div>
-  </footer>  <!-- WhatsApp Floating Icon --><a href="https://wa.me/919821660899?text=Heey%20A.N%20NEW%20TEQUNIQUES%20CENTER%2C%20I%20am%20interested%20in%20your%20services%2C%20please%20send%20me%20the%20details." target="_blank"
-style="position: fixed; bottom: 20px; right: 20px; background-color: #25D366; color: white;
-border-radius: 50%; width: 60px; height: 60px; display: flex; align-items: center;
-justify-content: center; font-size: 28px; text-decoration: none; box-shadow: 0 4px 8px rgba(0,0,0,0.3); z-index: 999;"> <i class="fab fa-whatsapp"></i> </a>
+  </footer>
 
-  <!-- Scripts -->  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>  <script>
+  <!-- WhatsApp Floating Icon -->
+  <a href="https://wa.me/919821660899?text=Hey%20A.N%20NEW%20TECHNIQUES%20CENTER%2C%20I%20am%20interested%20in%20your%20services." 
+     target="_blank"
+     style="position: fixed; bottom: 20px; right: 20px; background-color: #25D366; color: white;
+     border-radius: 50%; width: 60px; height: 60px; display: flex; align-items: center;
+     justify-content: center; font-size: 28px; text-decoration: none; box-shadow: 0 4px 8px rgba(0,0,0,0.3); z-index: 999;">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+
+  <!-- Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>  
+  <script>
     AOS.init();
-
     function toggleSearch() {
       const box = document.getElementById('searchBox');
       box.style.display = box.style.display === 'block' ? 'none' : 'block';
     }
-
-    function handleSearch(value) {
+    function performSearch() {
+      const value = document.getElementById('searchInput').value;
       console.log("Search input:", value);
     }
-  </script></body>
+  </script>
+</body> 
 </html>
+<!-- En

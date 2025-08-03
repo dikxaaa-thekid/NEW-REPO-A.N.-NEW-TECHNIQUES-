@@ -1,9 +1,9 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>real-estate - A.N NEW Techniques Center</title>
+  <title>Real-estate - A.N NEW Techniques Center</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -15,72 +15,78 @@
 
     .header {
       width: 100%;
-      padding: 25px 30px;
+      padding: 20px 20px;
       background-color: #f9f9f9;
       display: flex;
       justify-content: space-between;
+      flex-wrap: wrap;
       align-items: center;
-      border-bottom: 1px solid #ccc;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
       position: sticky;
+      top: 0;
+      z-index: 999;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     }
 
     .logo-section {
       display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
       align-items: center;
     }
 
     .logo-section img {
-      width: 100px;
-      height: 100px;
+      width: 70px;
+      height: 70px;
       border-radius: 50%;
       object-fit: cover;
       border: 2px solid #00000010;
-      margin-right: 15px;
     }
 
     .brand-name {
-      font-size: 36px;
+      font-size: 22px;
       font-weight: bold;
       color: #000;
       line-height: 1.2;
     }
 
     .tagline {
-      font-size: 14px;
+      font-size: 12px;
       color: #444;
       margin-top: 5px;
       font-style: italic;
     }
 
     .search-icon {
-      font-size: 24px;
+      font-size: 22px;
       cursor: pointer;
+      margin-left: auto;
     }
 
     .search-box {
       display: none;
       position: absolute;
-      top: 110px;
-      right: 30px;
+      top: 100%;
+      right: 20px;
       background-color: #fff;
       padding: 10px;
       border: 1px solid #ccc;
       box-shadow: 0 2px 6px rgba(0,0,0,0.2);
       border-radius: 8px;
+      margin-top: 5px;
       z-index: 1000;
     }
 
     .search-box input {
       padding: 5px 10px;
-      width: 200px;
+      width: 65%;
       border: 1px solid #aaa;
       border-radius: 4px;
       margin-right: 5px;
     }
 
     .search-box button {
-      padding: 6px 12px;
+      width: 30%;
+      padding: 6px;
       background-color: #333;
       color: white;
       border: none;
@@ -192,13 +198,13 @@
     }
 
     footer .footer-title {
-      font-size: 20px;
+      font-size: 15px;
       font-weight: bold;
-      margin-bottom: 10px;
+      margin-bottom: 15px;
     }
 
     footer .footer-powered {
-      font-size: 16px;
+      font-size: 12px;
       margin-bottom: 15px;
     }
 
@@ -213,6 +219,12 @@
     .fa-whatsapp { color: #25D366; }
     .fa-facebook { color: #3b5998; }
     .fa-linkedin { color: #0A66C2; }
+
+    @media (max-width: 768px) {
+      .brand-name { font-size: 18px; }
+      .tagline { font-size: 10px; }
+      .search-icon { font-size: 22px; }
+    }
   </style>
 </head>
 <body>
@@ -222,7 +234,7 @@
     <div class="logo-section">
       <img src="IMG-20250729-WA0015 - Copy.jpg" alt="Logo"/>
       <div>
-        <div class="brand-name">A.N NEW TECHNIQUES CENTER</div>
+        <div class="brand-name">A.N. NEW TECHNIQUES CENTER</div>
         <div class="tagline">• Real Estate | Education | Finance | Business Services •</div>
       </div>
     </div>
@@ -243,8 +255,9 @@
 
   <a href="https://wa.me/919821660899" class="whatsapp-float" target="_blank">
     <i class="fab fa-whatsapp"></i>
-  </a
-  >
+  </a>
+
+
 <!-- Start of Project Section -->
 <h2>🗺 Real Estate Planning</h2>
 
@@ -358,7 +371,7 @@
 
   <!-- FOOTER -->
   <footer>
-    <div class="footer-title">A.N New Techniques Center</div>
+    <div class="footer-title">© 2025 A.N. New Techniques Center - All rights reserved.</div>
     <div class="footer-powered">Powered by <strong style="color: #FFD700;">JCRM Technology</strong></div>
     <div class="social-icons">
       <a href="#"><i class="fab fa-youtube"></i></a>

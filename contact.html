@@ -17,14 +17,11 @@
     }
 
     .header {  
-      width: 100%; padding: 35px 50px; background-color: #f9f9f9;  
+      width: 100%; padding: 20px 20px; background-color: #f9f9f9;  
       display: flex; justify-content: space-between; align-items: center;  
       border-bottom: 1px solid #ccc;  
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1); position: relative;  
-      flex-wrap: wrap;
-      position: sticky;   
-      top: 0;             
-      z-index: 999;   
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);  
+      position: sticky; top: 0; z-index: 999;  
       flex-wrap: wrap;
     }
 
@@ -35,22 +32,22 @@
     }
 
     .logo-section img {
-      width: 100px; height: 100px; border-radius: 50%; object-fit: cover;
+      width: 70px; height: 70px; border-radius: 50%; object-fit: cover;
       border: 2px solid #00000010;
     }
 
     .brand-name {
-      font-size: 36px; font-weight: bold; color: #000; line-height: 1.2;
+      font-size: 22px; font-weight: bold; color: #000; line-height: 1.2;
     }
 
     .tagline {
-      font-size: 14px; color: #444; margin-top: 5px; font-style: italic;
+      font-size: 12px; color: #444; margin-top: 5px; font-style: italic;
     }
 
-    .search-icon { font-size: 24px; cursor: pointer; }
+    .search-icon { font-size: 22px; cursor: pointer; }
 
     .search-box {
-      display: none; position: absolute; top: 130px; right: 50px;
+      display: none; position: absolute; top: 100%; right: 20px;
       background-color: #fff; padding: 10px; border: 1px solid #ccc;
       box-shadow: 0 2px 6px rgba(0,0,0,0.2); border-radius: 8px; z-index: 1000;
     }
@@ -121,8 +118,8 @@
       padding: 40px 20px; margin-top: 40px;
     }
 
-    footer .footer-title { font-size: 20px; font-weight: bold; margin-bottom: 10px; }
-    footer .footer-powered { font-size: 16px; margin-bottom: 15px; }
+    footer .footer-title { font-size: 15px; font-weight: bold; margin-bottom: 15px; }
+    footer .footer-powered { font-size: 12px; margin-bottom: 15px; }
 
     footer .social-icons a {
       font-size: 24px; margin: 0 10px; color: #fff;
@@ -147,37 +144,54 @@
     .whatsapp-float i { color: white; }
 
     @media (max-width: 768px) {
-      .contact-heading h2 { font-size: 2.2rem; }
-
       .header {
-        flex-direction: column;
-        align-items: flex-start;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        position: relative;
       }
 
-      .logo-section {
-        width: 100%;
-        justify-content: flex-start;
+      .brand-name {
+        font-size: 18px;
+      }
+
+      .tagline {
+        font-size: 10px;
       }
 
       .search-box {
-        position: static;
-        margin-top: 10px;
+        position: absolute;
+        top: 100%;
+        right: 20px;
+        margin-top: 5px;
+        width: auto;
       }
 
-      .logo-section img {
-        width: 70px; height: 70px;
+      .search-box input {
+        width: 65%;
+        margin-bottom: 10px;
       }
+
+      .search-box button {
+        width: 30%;
+      }
+
+      .search-icon {
+        margin-left: auto;
+      }
+
+      .contact-heading h2 { font-size: 2.2rem; }
     }
-
   </style>  
 </head>  
-<body>  
+<body>
+<!-- REMAINING HTML SAME -->
 
   <div class="header" data-aos="fade-down">  
     <div class="logo-section">  
       <img src="IMG-20250729-WA0015 - Copy.jpg" alt="Logo"/>  
       <div>  
-        <div class="brand-name">A.N NEW TECQUNIQUES CENTER</div>  
+        <div class="brand-name">A.N. NEW TECHNIQUES CENTER</div>  
         <div class="tagline">• Real Estate | Education | Finance | Business Services •</div>  
       </div>  
     </div>  
@@ -202,10 +216,10 @@
   <section class="contact-section">  
     <div class="contact-form" data-aos="fade-right">  
       <h3>Send us a Message</h3>  
-      <form onsubmit="alert('Thank you! We will get back to you soon.'); return false;">  
-        <input type="text" placeholder="Your Name" required>  
-        <input type="email" placeholder="Your Email" required>  
-        <textarea rows="5" placeholder="Your Message" required></textarea>  
+      <form onsubmit="sendWhatsAppMessage(); return false;">  
+        <input type="text" id="name" placeholder="Your Name" required>  
+        <input type="email" id="email" placeholder="Your Email" required>  
+        <textarea rows="5" id="message" placeholder="Your Message" required></textarea>  
         <button type="submit">Submit</button>  
       </form>  
     </div>
@@ -223,8 +237,8 @@
   </section>  
 
   <footer data-aos="fade-up">  
-    <div class="footer-title">A.N New Techniques Center</div>  
-    <div class="footer-powered">Powered by <strong style="color: #FFD700;">JCRM Technology</strong></div>  
+    <div class="footer-title">© 2025 A.N. New Techniques Center - All rights reserved.</div>  
+    <div class="footer-powered">Powered by <strong style="color: #FFD700;">JCRM Technologies</strong></div>  
     <div class="social-icons">  
       <a href="https://www.youtube.com" target="_blank"><i class="fab fa-youtube"></i></a>  
       <a href="https://www.instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>  
@@ -255,6 +269,19 @@
         alert("Please enter something to search.");  
       }  
     }
+
+    function sendWhatsAppMessage() {
+      const name = document.getElementById("name").value.trim();
+      const email = document.getElementById("email").value.trim();
+      const message = document.getElementById("message").value.trim();
+      const fullMsg = `Hello, my name is ${name} (%0AEmail: ${email})%0A%0A${message}`;
+      const encodedMsg = encodeURIComponent(fullMsg);
+      const whatsappURL = `https://wa.me/919821660899?text=${encodedMsg}`;
+      window.open(whatsappURL, "_blank");
+    }
   </script>  
 </body>
-</html>
+</html> 
+<!-- This is the end of the contact.html file. -->
+<!-- The code includes a contact form, contact details, and a footer with social media links. -->
+<!-- The WhatsApp floating icon allows users to quickly send a message. --> 
